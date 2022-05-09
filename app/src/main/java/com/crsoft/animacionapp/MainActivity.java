@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private ObjectAnimator animatorRotation;
     private ObjectAnimator animatorAll;
 
+    //Duracion de la animación
     private long animationDuration = 1000;
 
     //AnimatorSet -> Reproduce un conjunto de ObjectAnimator en un orden especificado. Las animaciones pueden ser todas a la vez o secuenciadas
