@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">iBoñiga</string>
+    <string name="strImgDescription">Logo</string>
+    <string name="strProbabilidad">VER PROBABILIDAD</string>
+    <string name="strElegirCiudad">Escribir ciudad</string>
+    <string name="strErrorFichero">No se puede leer el fichero de ciudades. Por favor, reinstale la aplicación</string>
+    <string name="strFaltaCiudad">Debe seleccionar una ciudad disponible de la lista</string>
+    <string name="strResultado">La probabilidad de pisar una boñiga en este momento en la ciudad de %1$s es del </string>
+    <string name="strPorcentaje">%1$s%%</string>
+</resources>
