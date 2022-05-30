@@ -2,6 +2,7 @@ package com.crsoftware.iboiga;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
@@ -15,9 +16,10 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView imgLogo;
-    private MediaPlayer mp;
+    ImageView imgLogo;
+    MediaPlayer mp;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -28,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Vinculacion();
 
         //Ocultar ActionBar
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null)
+         getSupportActionBar().hide();
 
         //Timer para mostrar la ventana un determinado tiempo
         TimerTask tarea = new TimerTask() {
@@ -55,6 +58,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Vinculacion() {
-        imgLogo = (ImageView) findViewById(R.id.imgLogo);
+        imgLogo =  findViewById(R.id.imgLogo);
     }
 }

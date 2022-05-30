@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -32,8 +33,10 @@ public class MainActivity2 extends AppCompatActivity {
     final String[] ciudades = new String[52];
     MediaPlayer mp;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Dejar la pantalla en vertical
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
@@ -153,6 +156,8 @@ public class MainActivity2 extends AppCompatActivity {
         AnimatorSet animatorSetAlphaPor = new AnimatorSet();
         animatorSetAlphaPor.playTogether(animatorAlphaPor);
         animatorSetAlphaPor.start();
+
+
     }
 
     private void Limpiar(){
@@ -161,4 +166,6 @@ public class MainActivity2 extends AppCompatActivity {
         txtPorcentaje.setText("");
         txtLista.requestFocus();
     }
+
+
 }
