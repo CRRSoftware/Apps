@@ -4,41 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:screenOrientation="portrait"
     android:background="@drawable/degradado"
+    android:screenOrientation="portrait"
     tools:context=".MainActivity2">
-
-    <TextView
-        android:id="@+id/txtMensaje"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="170dp"
-        android:elegantTextHeight="true"
-        android:fontFamily="@font/pirata"
-        android:maxLength="270"
-        android:textAlignment="center"
-        android:textSize="26sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgLogoInterior"
         android:layout_width="333dp"
         android:layout_height="129dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
         android:contentDescription="@string/strImgDescription"
-        app:layout_constraintBottom_toTopOf="@+id/txtMensaje"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.322"
         app:srcCompat="@drawable/cr_logo_previo" />
 
     <ImageView
@@ -50,5 +30,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/fondoapp"
         tools:ignore="ImageContrastCheck" />
+
+    <Button
+        android:id="@+id/btRepetir"
+        android:layout_width="167dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/pirata"
+        android:text="@string/strRegarcar"
+        android:textColor="@color/purple_700"
+        android:textSize="20sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMensaje" />
+
+    <TextView
+        android:id="@+id/txtMensaje"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="170dp"
+        android:fontFamily="@font/pirata"
+        android:maxLength="270"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLogoInterior" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

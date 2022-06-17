@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,9 +28,13 @@ public class MainActivity2 extends AppCompatActivity {
     ArrayList<String> motiva = new ArrayList<>();
 
     TextView txtMensaje;
-    private ImageView imgLogoInterior;
+    ImageView imgLogoInterior;
+    Button btRecargar;
     @SuppressLint("SimpleDateFormat")
     SimpleDateFormat dtf = new SimpleDateFormat("dd/MM/yyyy");
+    int numAleatorio;
+    String fechaActual;
+    SharedPreferences pref;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -38,6 +44,8 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        pref = getSharedPreferences("configuracion", Context.MODE_PRIVATE);
+
         //Ocultar ActionBar
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
@@ -45,9 +53,10 @@ public class MainActivity2 extends AppCompatActivity {
         //Vincular controles
         Vinculacion();
 
-        //Girar Logo
+        //Girar Logo y boton
         Animation animationScale = AnimationUtils.loadAnimation(this, R.anim.scale);
         imgLogoInterior.startAnimation(animationScale);
+        btRecargar.startAnimation(animationScale);
 
         //Cargar fichero de ciudades
         CargarMotivaciones();
@@ -58,8 +67,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     private void ComprobarConfiguracion() {
         //Obtener fecha
-        String fechaActual = ObtenerFecha();
-        SharedPreferences pref = getSharedPreferences("configuracion", Context.MODE_PRIVATE);
+        fechaActual = ObtenerFecha();
 
         //Comprobar que no haya repetido día
         String msg = pref.getString(fechaActual,"");
@@ -113,7 +121,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         if (motiva.size() > 0) {
             //Contar el nº de lineas y elegir una aleatoriamente
-            int numAleatorio = (int) (Math.random() * motiva.size() + 1);
+            numAleatorio = (int) (Math.random() * motiva.size() + 1);
 
             mensaje = motiva.get(numAleatorio);
             txtMensaje.setText(mensaje.toUpperCase());
@@ -126,5 +134,21 @@ public class MainActivity2 extends AppCompatActivity {
     private void Vinculacion() {
         txtMensaje = findViewById(R.id.txtMensaje);
         imgLogoInterior = findViewById(R.id.imgLogoInterior);
+        btRecargar = findViewById(R.id.btRepetir);
+
+        btRecargar.setOnClickListener(this::Recargar);
+    }
+
+    private void Recargar(View view) {
+        int aleatorio =  (int) (Math.random() * motiva.size() + 1);
+        String mensajeBis = motiva.get(aleatorio);
+
+        txtMensaje.setText(mensajeBis.toUpperCase());
+        btRecargar.setVisibility(View.INVISIBLE);
+
+        //Guardar en fichero
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(fechaActual,txtMensaje.getText().toString());
+        editor.apply();
     }
 }
