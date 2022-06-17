@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">iMotiva</string>
+    <string name="strImgDescription">Logo</string>
+    <string name="strErrorFichero">No se puede leer el fichero de motivaciones. Por favor, reinstale la aplicación</string>
+</resources>
