@@ -35,6 +35,7 @@ public class MainActivity2 extends AppCompatActivity {
     int numAleatorio;
     String fechaActual;
     SharedPreferences pref;
+    Animation animationScale;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -54,11 +55,11 @@ public class MainActivity2 extends AppCompatActivity {
         Vinculacion();
 
         //Girar Logo y boton
-        Animation animationScale = AnimationUtils.loadAnimation(this, R.anim.scale);
+        animationScale = AnimationUtils.loadAnimation(this, R.anim.scale);
         imgLogoInterior.startAnimation(animationScale);
-        btRecargar.startAnimation(animationScale);
 
-        //Cargar fichero de ciudades
+
+        //Cargar fichero de motivaciones
         CargarMotivaciones();
 
         //ComprobarConfiguracion
@@ -77,6 +78,11 @@ public class MainActivity2 extends AppCompatActivity {
             //Mostrar en control
             MostrarMotivacion(motiva);
 
+            //Mostrar boton si es la primera vez
+            btRecargar.setVisibility(View.VISIBLE);
+            btRecargar.startAnimation(animationScale);
+
+
             //Guardar en fichero
             SharedPreferences.Editor editor = pref.edit();
             editor.putString(fechaActual,txtMensaje.getText().toString());
@@ -84,6 +90,7 @@ public class MainActivity2 extends AppCompatActivity {
         }
         else{
             txtMensaje.setText(msg);
+            btRecargar.setVisibility(View.INVISIBLE);
         }
     }
 
